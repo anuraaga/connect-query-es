@@ -76,9 +76,7 @@ export const ConverseResponse = /*@__PURE__*/ proto3.makeMessageType(
  */
 export const IntroduceRequest = /*@__PURE__*/ proto3.makeMessageType(
   "connectrpc.eliza.v1.IntroduceRequest",
-  () => [
-    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ],
+  () => [{ no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ }],
 );
 
 /**
@@ -92,4 +90,3 @@ export const IntroduceResponse = /*@__PURE__*/ proto3.makeMessageType(
     { no: 1, name: "sentence", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ],
 );
-

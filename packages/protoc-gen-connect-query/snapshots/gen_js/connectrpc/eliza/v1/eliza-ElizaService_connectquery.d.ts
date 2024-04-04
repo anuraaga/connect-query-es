@@ -26,11 +26,11 @@ import { MethodKind } from "@bufbuild/protobuf";
  * @generated from rpc connectrpc.eliza.v1.ElizaService.Say
  */
 export const say: {
-      readonly name: "Say",
-      readonly I: typeof SayRequest,
-      readonly O: typeof SayResponse,
-      readonly kind: MethodKind.Unary,
+  readonly name: "Say";
+  readonly I: typeof SayRequest;
+  readonly O: typeof SayResponse;
+  readonly kind: MethodKind.Unary;
   readonly service: {
-    readonly typeName: "connectrpc.eliza.v1.ElizaService"
-  }
+    readonly typeName: "connectrpc.eliza.v1.ElizaService";
+  };
 };

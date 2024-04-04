@@ -31,6 +31,6 @@ export const say = {
   I: SayRequest,
   O: SayResponse,
   service: {
-    typeName: "connectrpc.eliza.v1.ElizaService"
-  }
+    typeName: "connectrpc.eliza.v1.ElizaService",
+  },
 } as const;

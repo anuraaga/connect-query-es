@@ -74,7 +74,7 @@ function createUnaryQueryFn<I extends Message<I>, O extends Message<O>>(
   }: {
     transport: Transport;
     callOptions?: CallOptions | undefined;
-  }
+  },
 ): QueryFunction<O, ConnectQueryKey<I>> {
   return async (context) => {
     assert(input !== disableQuery, "Disabled query cannot be fetched");
@@ -102,7 +102,7 @@ export function createUseQueryOptions<
     callOptions,
   }: ConnectQueryOptions & {
     transport: Transport;
-  }
+  },
 ): {
   queryKey: ConnectQueryKey<I>;
   queryFn: QueryFunction<O, ConnectQueryKey<I>>;

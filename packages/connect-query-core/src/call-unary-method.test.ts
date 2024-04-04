@@ -33,7 +33,7 @@ describe("callUnaryMethod", () => {
       },
       {
         transport,
-      }
+      },
     );
     expect(result.sentence).toEqual("Hello name");
   });

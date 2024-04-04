@@ -107,7 +107,7 @@ function createUnaryInfiniteQueryFn<
     transport: Transport;
     callOptions?: CallOptions | undefined;
     pageParamKey: ParamKey;
-  }
+  },
 ): QueryFunction<O, ConnectInfiniteQueryKey<I>, PartialMessage<I>[ParamKey]> {
   return async (context) => {
     assert(input !== disableQuery, "Disabled query cannot be fetched");
@@ -147,7 +147,7 @@ export function createUseInfiniteQueryOptions<
     getNextPageParam,
     pageParamKey,
     callOptions,
-  }: ConnectInfiniteQueryOptions<I, O, ParamKey>
+  }: ConnectInfiniteQueryOptions<I, O, ParamKey>,
 ): {
   getNextPageParam: ConnectInfiniteQueryOptions<
     I,
@@ -170,7 +170,7 @@ export function createUseInfiniteQueryOptions<
       : {
           ...input,
           [pageParamKey]: undefined,
-        }
+        },
   );
   return {
     getNextPageParam,
