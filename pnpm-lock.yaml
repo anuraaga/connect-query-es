@@ -146,9 +146,6 @@ importers:
       '@connectrpc/connect-query-core':
         specifier: workspace:*
         version: link:../connect-query-core
-      stable-hash:
-        specifier: ^0.0.4
-        version: 0.0.4
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: ^0.15.2
@@ -207,10 +204,19 @@ importers:
       '@tanstack/query-core':
         specifier: ^5.28.13
         version: 5.28.13
+      stable-hash:
+        specifier: ^0.0.4
+        version: 0.0.4
     devDependencies:
+      '@arethetypeswrong/cli':
+        specifier: ^0.15.2
+        version: 0.15.2
       '@bufbuild/buf':
         specifier: 1.30.0
         version: 1.30.0
+      '@bufbuild/jest-environment-jsdom':
+        specifier: ^0.1.1
+        version: 0.1.1(jest-environment-jsdom@29.7.0)
       '@bufbuild/protoc-gen-es':
         specifier: ^1.8.0
         version: 1.8.0(@bufbuild/protobuf@1.8.0)

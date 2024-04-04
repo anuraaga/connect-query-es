@@ -21,7 +21,12 @@ export {
   createConnectInfiniteQueryKey,
 } from "./connect-query-key.js";
 export { disableQuery, createProtobufSafeUpdater } from "./utils.js";
+export type { ConnectInfiniteQueryOptions } from "./create-infinite-query-options.js";
+export { createInfiniteQueryOptions } from "./create-infinite-query-options.js";
+export type { ConnectQueryOptions } from "./create-query-options.js";
+export { createQueryOptions } from "./create-query-options.js";
 
 export type { DisableQuery, ConnectUpdater } from "./utils.js";
 export { callUnaryMethod } from "./call-unary-method.js";
 export type { MethodUnaryDescriptor } from "./method-unary-descriptor.js";
+export { defaultOptions } from "./default-options.js";

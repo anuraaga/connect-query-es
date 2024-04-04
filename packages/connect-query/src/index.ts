@@ -14,15 +14,15 @@
 
 export * from "@connectrpc/connect-query-core";
 export { useTransport, TransportProvider } from "./use-transport.js";
-export type { CreateInfiniteQueryOptions as UseInfiniteQueryOptions } from "./create-use-infinite-query-options.js";
+export type {
+  UseInfiniteQueryOptions,
+  UseSuspenseInfiniteQueryOptions,
+} from "./use-infinite-query.js";
 export {
   useInfiniteQuery,
   useSuspenseInfiniteQuery,
 } from "./use-infinite-query.js";
-export type { CreateQueryOptions as UseQueryOptions } from "./create-use-query-options.js";
+export type { UseQueryOptions, UseSuspenseQueryOptions } from "./use-query.js";
 export { useQuery, useSuspenseQuery } from "./use-query.js";
 export type { UseMutationOptions } from "./use-mutation.js";
 export { useMutation } from "./use-mutation.js";
-export { defaultOptions } from "./default-options.js";
-export { createUseInfiniteQueryOptions as createInfiniteQueryOptions } from "./create-use-infinite-query-options.js";
-export { createUseQueryOptions as createQueryOptions } from "./create-use-query-options.js";
