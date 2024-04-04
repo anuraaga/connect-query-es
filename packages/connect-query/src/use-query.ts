@@ -15,6 +15,10 @@
 import type { Message, PartialMessage } from "@bufbuild/protobuf";
 import type { ConnectError, Transport } from "@connectrpc/connect";
 import type {
+  DisableQuery,
+  MethodUnaryDescriptor,
+} from "@connectrpc/connect-query-core";
+import type {
   UseQueryResult,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
@@ -28,9 +32,7 @@ import type {
   CreateSuspenseQueryOptions,
 } from "./create-use-query-options.js";
 import { createUseQueryOptions } from "./create-use-query-options.js";
-import type { MethodUnaryDescriptor } from "./method-unary-descriptor.js";
 import { useTransport } from "./use-transport.js";
-import type { DisableQuery } from "./utils.js";
 
 /**
  * Query the method provided. Maps to useQuery on tanstack/react-query
@@ -51,7 +53,7 @@ export function useQuery<
     ...queryOptions
   }: Omit<CreateQueryOptions<I, O, SelectOutData>, "transport"> & {
     transport?: Transport;
-  } = {},
+  } = {}
 ): UseQueryResult<SelectOutData, ConnectError> {
   const transportFromCtx = useTransport();
   const baseOptions = createUseQueryOptions(methodSig, input, {
@@ -87,7 +89,7 @@ export function useSuspenseQuery<
     ...queryOptions
   }: Omit<CreateSuspenseQueryOptions<I, O, SelectOutData>, "transport"> & {
     transport?: Transport;
-  } = {},
+  } = {}
 ): UseSuspenseQueryResult<SelectOutData, ConnectError> {
   const transportFromCtx = useTransport();
   const baseOptions = createUseQueryOptions(methodSig, input, {

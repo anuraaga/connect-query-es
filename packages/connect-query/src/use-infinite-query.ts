@@ -15,6 +15,10 @@
 import type { Message, PartialMessage } from "@bufbuild/protobuf";
 import type { ConnectError, Transport } from "@connectrpc/connect";
 import type {
+  DisableQuery,
+  MethodUnaryDescriptor,
+} from "@connectrpc/connect-query-core";
+import type {
   InfiniteData,
   UseInfiniteQueryResult,
   UseSuspenseInfiniteQueryResult,
@@ -29,9 +33,7 @@ import type {
   CreateSuspenseInfiniteQueryOptions,
 } from "./create-use-infinite-query-options.js";
 import { createUseInfiniteQueryOptions } from "./create-use-infinite-query-options.js";
-import type { MethodUnaryDescriptor } from "./method-unary-descriptor.js";
 import { useTransport } from "./use-transport.js";
-import type { DisableQuery } from "./utils.js";
 
 /**
  * Query the method provided. Maps to useInfiniteQuery on tanstack/react-query
@@ -56,7 +58,7 @@ export function useInfiniteQuery<
     ...options
   }: Omit<CreateInfiniteQueryOptions<I, O, ParamKey>, "transport"> & {
     transport?: Transport;
-  },
+  }
 ): UseInfiniteQueryResult<InfiniteData<O>, ConnectError> {
   const transportFromCtx = useTransport();
   const baseOptions = createUseInfiniteQueryOptions(methodSig, input, {
@@ -92,7 +94,7 @@ export function useSuspenseInfiniteQuery<
     ...options
   }: Omit<CreateSuspenseInfiniteQueryOptions<I, O, ParamKey>, "transport"> & {
     transport?: Transport;
-  },
+  }
 ): UseSuspenseInfiniteQueryResult<InfiniteData<O>, ConnectError> {
   const transportFromCtx = useTransport();
   const baseOptions = createUseInfiniteQueryOptions(methodSig, input, {

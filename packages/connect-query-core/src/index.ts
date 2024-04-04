@@ -12,11 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Throws an error with the provided message when the condition is `false`
- */
-export function assert(condition: boolean, message: string): asserts condition {
-  if (!condition) {
-    throw new Error(`Invalid assertion: ${message}`);
-  }
-}
+export type {
+  ConnectQueryKey,
+  ConnectInfiniteQueryKey,
+} from "./connect-query-key.js";
+export {
+  createConnectQueryKey,
+  createConnectInfiniteQueryKey,
+} from "./connect-query-key.js";
+export { disableQuery, createProtobufSafeUpdater } from "./utils.js";
+
+export type { DisableQuery, ConnectUpdater } from "./utils.js";
+export { callUnaryMethod } from "./call-unary-method.js";
+export type { MethodUnaryDescriptor } from "./method-unary-descriptor.js";

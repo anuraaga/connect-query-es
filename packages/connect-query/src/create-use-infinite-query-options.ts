@@ -15,6 +15,16 @@
 import type { Message, PartialMessage } from "@bufbuild/protobuf";
 import type { CallOptions, ConnectError, Transport } from "@connectrpc/connect";
 import type {
+  ConnectInfiniteQueryKey,
+  DisableQuery,
+  MethodUnaryDescriptor,
+} from "@connectrpc/connect-query-core";
+import {
+  callUnaryMethod,
+  createConnectInfiniteQueryKey,
+  disableQuery,
+} from "@connectrpc/connect-query-core";
+import type {
   GetNextPageParamFunction,
   InfiniteData,
   QueryFunction,
@@ -22,13 +32,7 @@ import type {
   UseSuspenseInfiniteQueryOptions,
 } from "@tanstack/react-query";
 
-import { callUnaryMethod } from "./call-unary-method.js";
-import {
-  type ConnectInfiniteQueryKey,
-  createConnectInfiniteQueryKey,
-} from "./connect-query-key.js";
-import type { MethodUnaryDescriptor } from "./method-unary-descriptor.js";
-import { assert, type DisableQuery, disableQuery } from "./utils.js";
+import { assert } from "./utils.js";
 
 /**
  * Options specific to connect-query
@@ -103,7 +107,7 @@ function createUnaryInfiniteQueryFn<
     transport: Transport;
     callOptions?: CallOptions | undefined;
     pageParamKey: ParamKey;
-  },
+  }
 ): QueryFunction<O, ConnectInfiniteQueryKey<I>, PartialMessage<I>[ParamKey]> {
   return async (context) => {
     assert(input !== disableQuery, "Disabled query cannot be fetched");
@@ -143,7 +147,7 @@ export function createUseInfiniteQueryOptions<
     getNextPageParam,
     pageParamKey,
     callOptions,
-  }: ConnectInfiniteQueryOptions<I, O, ParamKey>,
+  }: ConnectInfiniteQueryOptions<I, O, ParamKey>
 ): {
   getNextPageParam: ConnectInfiniteQueryOptions<
     I,
@@ -166,7 +170,7 @@ export function createUseInfiniteQueryOptions<
       : {
           ...input,
           [pageParamKey]: undefined,
-        },
+        }
   );
   return {
     getNextPageParam,

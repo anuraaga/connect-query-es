@@ -15,16 +15,22 @@
 import type { Message, PartialMessage } from "@bufbuild/protobuf";
 import type { CallOptions, ConnectError, Transport } from "@connectrpc/connect";
 import type {
+  ConnectQueryKey,
+  DisableQuery,
+  MethodUnaryDescriptor,
+} from "@connectrpc/connect-query-core";
+import {
+  callUnaryMethod,
+  createConnectQueryKey,
+  disableQuery,
+} from "@connectrpc/connect-query-core";
+import type {
   QueryFunction,
   UseQueryOptions,
   UseSuspenseQueryOptions,
 } from "@tanstack/react-query";
 
-import { callUnaryMethod } from "./call-unary-method.js";
-import type { ConnectQueryKey } from "./connect-query-key.js";
-import { createConnectQueryKey } from "./connect-query-key.js";
-import type { MethodUnaryDescriptor } from "./method-unary-descriptor.js";
-import { assert, type DisableQuery, disableQuery } from "./utils.js";
+import { assert } from "./utils.js";
 
 export interface ConnectQueryOptions {
   /** The transport to be used for the fetching. */
@@ -68,7 +74,7 @@ function createUnaryQueryFn<I extends Message<I>, O extends Message<O>>(
   }: {
     transport: Transport;
     callOptions?: CallOptions | undefined;
-  },
+  }
 ): QueryFunction<O, ConnectQueryKey<I>> {
   return async (context) => {
     assert(input !== disableQuery, "Disabled query cannot be fetched");
@@ -96,7 +102,7 @@ export function createUseQueryOptions<
     callOptions,
   }: ConnectQueryOptions & {
     transport: Transport;
-  },
+  }
 ): {
   queryKey: ConnectQueryKey<I>;
   queryFn: QueryFunction<O, ConnectQueryKey<I>>;

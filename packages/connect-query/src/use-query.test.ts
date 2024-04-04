@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import { disableQuery } from "@connectrpc/connect-query-core";
 import { describe, expect, it } from "@jest/globals";
 import { renderHook, waitFor } from "@testing-library/react";
 
 import { ElizaService } from "./gen/eliza_connect.js";
 import { mockEliza, wrapper } from "./jest/test-utils.js";
 import { useQuery, useSuspenseQuery } from "./use-query.js";
-import { disableQuery } from "./utils.js";
 
 // TODO: maybe create a helper to take a service and method and generate this.
 const sayMethodDescriptor = {
@@ -41,7 +41,7 @@ describe("useQuery", () => {
           sentence: "hello",
         });
       },
-      wrapper({}, mockedElizaTransport),
+      wrapper({}, mockedElizaTransport)
     );
 
     await waitFor(() => {
@@ -56,7 +56,7 @@ describe("useQuery", () => {
       () => {
         return useQuery(sayMethodDescriptor, disableQuery);
       },
-      wrapper(undefined, mockedElizaTransport),
+      wrapper(undefined, mockedElizaTransport)
     );
     expect(result.current.isPending).toBeTruthy();
     expect(result.current.isFetching).toBeFalsy();
@@ -72,10 +72,10 @@ describe("useQuery", () => {
             transport: mockEliza({
               sentence: "Intercepted!",
             }),
-          },
+          }
         );
       },
-      wrapper(undefined, mockedElizaTransport),
+      wrapper(undefined, mockedElizaTransport)
     );
     await waitFor(() => {
       expect(result.current.isSuccess).toBeTruthy();
@@ -95,10 +95,10 @@ describe("useQuery", () => {
             placeholderData: new sayMethodDescriptor.O({
               sentence: "placeholder!",
             }),
-          },
+          }
         );
       },
-      wrapper(undefined, mockedElizaTransport),
+      wrapper(undefined, mockedElizaTransport)
     );
     expect(result.current.data?.sentence).toBe("placeholder!");
   });
@@ -111,10 +111,10 @@ describe("useQuery", () => {
           {},
           {
             select: (data) => data.sentence.length,
-          },
+          }
         );
       },
-      wrapper(undefined, mockedElizaTransport),
+      wrapper(undefined, mockedElizaTransport)
     );
 
     await waitFor(() => {
@@ -134,10 +134,10 @@ describe("useQuery", () => {
           },
           {
             enabled: false,
-          },
+          }
         );
       },
-      wrapper({}, mockedElizaTransport),
+      wrapper({}, mockedElizaTransport)
     );
 
     expect(result.current.data).toBeUndefined();
@@ -152,7 +152,7 @@ describe("useQuery", () => {
           enabled: true,
         });
       },
-      wrapper({}, mockedElizaTransport),
+      wrapper({}, mockedElizaTransport)
     );
 
     expect(result.current.data).toBeUndefined();
@@ -169,7 +169,7 @@ describe("useSuspenseQuery", () => {
           sentence: "hello",
         });
       },
-      wrapper({}, mockedElizaTransport),
+      wrapper({}, mockedElizaTransport)
     );
 
     await waitFor(() => {
@@ -189,10 +189,10 @@ describe("useSuspenseQuery", () => {
           },
           {
             select: (data) => data.sentence.length,
-          },
+          }
         );
       },
-      wrapper({}, mockedElizaTransport),
+      wrapper({}, mockedElizaTransport)
     );
 
     await waitFor(() => {

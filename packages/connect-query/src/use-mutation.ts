@@ -15,14 +15,16 @@
 import type { Message, PartialMessage } from "@bufbuild/protobuf";
 import type { CallOptions, ConnectError, Transport } from "@connectrpc/connect";
 import type {
+  ConnectQueryKey,
+  MethodUnaryDescriptor,
+} from "@connectrpc/connect-query-core";
+import type {
   UseMutationOptions as TSUseMutationOptions,
   UseMutationResult,
 } from "@tanstack/react-query";
 import { useMutation as tsUseMutation } from "@tanstack/react-query";
 import { useCallback } from "react";
 
-import type { ConnectQueryKey } from "./connect-query-key.js";
-import type { MethodUnaryDescriptor } from "./method-unary-descriptor.js";
 import { useTransport } from "./use-transport.js";
 
 /**
@@ -48,7 +50,7 @@ export type UseMutationOptions<
 export function useMutation<I extends Message<I>, O extends Message<O>>(
   methodSig: MethodUnaryDescriptor<I, O>,
   // istanbul ignore next
-  { transport, callOptions, ...queryOptions }: UseMutationOptions<I, O> = {},
+  { transport, callOptions, ...queryOptions }: UseMutationOptions<I, O> = {}
 ): UseMutationResult<O, ConnectError, PartialMessage<I>> {
   const transportFromCtx = useTransport();
   const transportToUse = transport ?? transportFromCtx;
@@ -60,11 +62,11 @@ export function useMutation<I extends Message<I>, O extends Message<O>>(
         callOptions?.signal,
         callOptions?.timeoutMs,
         callOptions?.headers,
-        input,
+        input
       );
       return result.message;
     },
-    [transportToUse, callOptions, methodSig],
+    [transportToUse, callOptions, methodSig]
   );
   return tsUseMutation({
     ...queryOptions,

@@ -12,11 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Throws an error with the provided message when the condition is `false`
- */
-export function assert(condition: boolean, message: string): asserts condition {
-  if (!condition) {
-    throw new Error(`Invalid assertion: ${message}`);
-  }
-}
+import type { Config } from "jest";
+
+const config: Config = {
+  preset: "../../jest-preset.js",
+  testEnvironment: "@bufbuild/jest-environment-jsdom",
+  moduleNameMapper: {
+    "(.+)\\.js": "$1", // https://connectrpc.com/docs/web/supported-browsers-and-frameworks/#jest
+  },
+  testMatch: ["<rootDir>/**/*.test.ts?(x)"],
+};
+
+export default config;
