@@ -37,4 +37,21 @@ describe("callUnaryMethod", () => {
     );
     expect(result.sentence).toEqual("Hello name");
   });
+
+  it("undefined message provides a default", async () => {
+    const transport = mockEliza();
+    const result = await callUnaryMethod(
+      {
+        ...ElizaService.methods.say,
+        service: {
+          typeName: ElizaService.typeName,
+        },
+      },
+      undefined,
+      {
+        transport,
+      },
+    );
+    expect(result.sentence).toEqual("Hello ");
+  });
 });

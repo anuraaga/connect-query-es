@@ -16,6 +16,7 @@
  * Throws an error with the provided message when the condition is `false`
  */
 export function assert(condition: boolean, message: string): asserts condition {
+  // istanbul ignore next
   if (!condition) {
     throw new Error(`Invalid assertion: ${message}`);
   }
