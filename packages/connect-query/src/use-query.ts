@@ -84,7 +84,7 @@ export function useQuery<
     ...queryOptions
   }: Omit<UseQueryOptions<I, O, SelectOutData>, "transport"> & {
     transport?: Transport;
-  } = {}
+  } = {},
 ): UseQueryResult<SelectOutData, ConnectError> {
   const transportFromCtx = useTransport();
   const baseOptions = createQueryOptions(methodSig, input, {
@@ -120,7 +120,7 @@ export function useSuspenseQuery<
     ...queryOptions
   }: Omit<UseSuspenseQueryOptions<I, O, SelectOutData>, "transport"> & {
     transport?: Transport;
-  } = {}
+  } = {},
 ): UseSuspenseQueryResult<SelectOutData, ConnectError> {
   const transportFromCtx = useTransport();
   const baseOptions = createQueryOptions(methodSig, input, {
