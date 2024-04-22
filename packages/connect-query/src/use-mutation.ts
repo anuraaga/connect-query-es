@@ -16,7 +16,6 @@ import type { Message, PartialMessage } from "@bufbuild/protobuf";
 import type { CallOptions, ConnectError, Transport } from "@connectrpc/connect";
 import {
   callUnaryMethod,
-  type ConnectQueryKey,
   type MethodUnaryDescriptor,
 } from "@connectrpc/connect-query-core";
 import type {
